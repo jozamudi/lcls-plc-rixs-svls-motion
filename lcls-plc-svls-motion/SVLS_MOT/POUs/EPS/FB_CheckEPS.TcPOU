@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="FB_CheckEPS" Id="{34d78ab9-508b-476a-b7bf-433873b84d5d}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_CheckEPS
 VAR_IN_OUT
@@ -78,7 +78,15 @@ IF bEPS_Override THEN
     stForwardMotorEPS.bEPS_OK := TRUE;
 END_IF
 
-nPreviousState := nEPSIndex; // Update Previous State]]></ST>
+nPreviousState := nEPSIndex; // Update Previous State
+]]></ST>
     </Implementation>
+    <LineIds Name="FB_CheckEPS">
+      <LineId Id="3" Count="17" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="22" Count="29" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="54" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

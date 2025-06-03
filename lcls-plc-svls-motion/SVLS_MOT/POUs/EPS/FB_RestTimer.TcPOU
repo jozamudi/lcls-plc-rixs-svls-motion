@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="FB_RestTimer" Id="{1db109a2-39f6-4851-98e9-e4f5441e8a1b}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_RestTimer
 // Resets value of input after some time
@@ -28,9 +28,10 @@ END_IF
 IF fbTimer.Q THEN
     bInput := FALSE;
     tCountDown := TIME_TO_STRING(T#0s);
-END_IF
-
-]]></ST>
+END_IF]]></ST>
     </Implementation>
+    <LineIds Name="FB_RestTimer">
+      <LineId Id="3" Count="9" />
+    </LineIds>
   </POU>
 </TcPlcObject>
