@@ -30,8 +30,5 @@ IF fbTimer.Q THEN
     tCountDown := TIME_TO_STRING(T#0s);
 END_IF]]></ST>
     </Implementation>
-    <LineIds Name="FB_RestTimer">
-      <LineId Id="3" Count="9" />
-    </LineIds>
   </POU>
 </TcPlcObject>

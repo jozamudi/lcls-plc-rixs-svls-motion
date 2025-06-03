@@ -15,8 +15,5 @@ END_VAR
       <ST><![CDATA[F_InRange := (lower_limit < value) AND (value < upper_limit);
 ]]></ST>
     </Implementation>
-    <LineIds Name="F_InRange">
-      <LineId Id="2" Count="1" />
-    </LineIds>
   </POU>
 </TcPlcObject>

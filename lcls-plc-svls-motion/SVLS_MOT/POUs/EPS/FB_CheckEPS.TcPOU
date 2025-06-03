@@ -81,12 +81,5 @@ END_IF
 nPreviousState := nEPSIndex; // Update Previous State
 ]]></ST>
     </Implementation>
-    <LineIds Name="FB_CheckEPS">
-      <LineId Id="3" Count="17" />
-      <LineId Id="53" Count="0" />
-      <LineId Id="22" Count="29" />
-      <LineId Id="2" Count="0" />
-      <LineId Id="54" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>
