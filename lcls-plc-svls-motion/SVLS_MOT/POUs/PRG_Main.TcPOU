@@ -29,6 +29,7 @@ VAR
         stMotionStageAxisDetH := Main.M8,
         bDetHMoveAbsoluteBusy := fbDetYH.fbDriveVirtual.fbMoveAbsolute.Busy
     );
+
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -57,11 +58,14 @@ IF bInit THEN
     Main.M8.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 END_IF
 
+PRG_DET_Z_EPS();
+
 fbDetYAngle(stMotionStage:=Main.M1);
 fbHController();
 fbDetYH(stMotionStage:=Main.M8);
 fbDetZ(stMotionStage:=Main.M2);
 fbGraY(stMotionStage:=Main.M3);
+
 ]]></ST>
     </Implementation>
   </POU>

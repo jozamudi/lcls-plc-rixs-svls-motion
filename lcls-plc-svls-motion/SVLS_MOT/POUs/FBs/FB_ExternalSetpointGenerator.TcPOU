@@ -4,7 +4,7 @@
     <Declaration><![CDATA[
 FUNCTION_BLOCK FB_ExternalSetpointGenerator IMPLEMENTS I_ExternalSetpointGenerator
 VAR CONSTANT
-    nOFFSET_TO_NCTOPLC_AXIS_REF_STATE : LWORD := 0;
+    nOFFSET_TO_NCTOPLC_AXIS_REF_STATE : DWORD := 0;
 END_VAR
 VAR
     iMotionAxis : I_MotionAxis;
