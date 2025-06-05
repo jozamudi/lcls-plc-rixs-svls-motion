@@ -1,16 +1,15 @@
-#!c:/Repos/ads-ioc/R0.8.0///bin/rhel7-x86_64/adsIoc
+#!/reg/g/pcds/epics/ioc/common/ads-ioc/R0.8.0/bin/rhel7-x86_64/adsIoc
 ################### AUTO-GENERATED DO NOT EDIT ###################
 #
 #         Project: lcls-plc-svls-motion.tsproj
 #        PLC name: SVLS_MOT (SVLS_MOT Instance)
-# Generated using: pytmc 2.18.2
-# Project version: unknown
-#    Project hash: unknown
+# Generated using: pytmc 2.17.0
+# Project version: eabdb45
+#    Project hash: eabdb457c3aae49a167c832893f4fd08da2df46a
 #     PLC IP/host: 172.21.140.150
 #      PLC Net ID: 172.21.140.150.1.1
-# ** DEVELOPMENT MODE IOC **
-# * Using IOC boot directory for autosave.
-# * Archiver settings will not be configured.
+#  ** Production mode IOC **
+#  Using /cds/data/iocData for autosave and archiver settings.
 #
 # Libraries:
 #
@@ -30,10 +29,13 @@
 
 epicsEnvSet("ADS_IOC_TOP", "$(TOP)" )
 
-epicsEnvSet("ENGINEER", "" )
-epicsEnvSet("LOCATION", "PLC:SVLS_MOT" )
+epicsEnvSet("ENGINEER", "jozamudi" )
+epicsEnvSet("LOCATION", "PLC:SVLS:MOT" )
 epicsEnvSet("IOCSH_PS1", "$(IOC)> " )
 epicsEnvSet("ACF_FILE", "$(ADS_IOC_TOP)/iocBoot/templates/unrestricted.acf")
+
+# Run common startup commands for linux soft IOC's
+< /reg/d/iocCommon/All/pre_linux.cmd
 
 # Register all support components
 dbLoadDatabase("$(ADS_IOC_TOP)/dbd/adsIoc.dbd")
@@ -43,14 +45,14 @@ epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
 epicsEnvSet("IPADDR",           "172.21.140.150")
 epicsEnvSet("AMSID",            "172.21.140.150.1.1")
 epicsEnvSet("AMS_PORT",         "851")
-epicsEnvSet("ADS_MAX_PARAMS",   "1255")
+epicsEnvSet("ADS_MAX_PARAMS",   "1275")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
 epicsEnvSet("ADS_MAX_DELAY_MS", "100")
 epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
 epicsEnvSet("ADS_TIME_SOURCE",  "0")
 
 # Add a route to the PLC automatically:
-system("${ADS_IOC_TOP}/scripts/add_route.sh 172.21.140.150 ^172.*$")
+system("${ADS_IOC_TOP}/scripts/add_route.sh 172.21.140.150 ^172.*")
 
 # adsAsynPortDriverConfigure(portName, ipaddr, amsaddr, amsport,
 #    asynParamTableSize, priority, noAutoConnect, defaultSampleTimeMS,
@@ -81,7 +83,7 @@ cd "$(ADS_IOC_TOP)/db"
 
 
 epicsEnvSet("MOTOR_PORT",     "PLC_ADS")
-epicsEnvSet("PREFIX",         "PLC:SVLS_MOT:")
+epicsEnvSet("PREFIX",         "PLC:SVLS:MOT:")
 epicsEnvSet("NUMAXES",        "12")
 epicsEnvSet("MOVE_POLL_RATE", "200")
 epicsEnvSet("IDLE_POLL_RATE", "1000")
@@ -174,62 +176,69 @@ dbLoadRecords("EthercatMCreadback.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME
 dbLoadRecords("EthercatMCdebug.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), MOTOR_PORT=$(MOTOR_PORT), AXIS_NO=$(AXIS_NO), PREC=3")
 
 
-dbLoadRecords("iocSoft.db", "IOC=PLC:SVLS_MOT")
-dbLoadRecords("save_restoreStatus.db", "P=PLC:SVLS_MOT:")
+dbLoadRecords("iocSoft.db", "IOC=PLC:SVLS:MOT")
+dbLoadRecords("save_restoreStatus.db", "P=PLC:SVLS:MOT:")
 dbLoadRecords("caPutLog.db", "IOC=$(IOC)")
 
 ## TwinCAT task, application, and project information databases ##
-dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:SVLS_MOT,IDX=1,TASK_PORT=351")
-dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:SVLS_MOT,IDX=2,TASK_PORT=352")
-dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:SVLS_MOT,IDX=3,TASK_PORT=350")
-dbLoadRecords("TwinCAT_AppInfo.db", "PORT=$(ASYN_PORT), PREFIX=PLC:SVLS_MOT")
+dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:SVLS:MOT,IDX=1,TASK_PORT=351")
+dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:SVLS:MOT,IDX=2,TASK_PORT=352")
+dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:SVLS:MOT,IDX=3,TASK_PORT=350")
+dbLoadRecords("TwinCAT_AppInfo.db", "PORT=$(ASYN_PORT), PREFIX=PLC:SVLS:MOT")
 
-dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:SVLS_MOT,PROJECT=lcls-plc-svls-motion.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.18.2,PLC_HOST=172.21.140.150")
+dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:SVLS:MOT,PROJECT=lcls-plc-svls-motion.tsproj,HASH=eabdb45,VERSION=eabdb45,PYTMC=2.17.0,PLC_HOST=172.21.140.150")
 
 #   LCLS General: * -> 2.11.0 (SLAC)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS_MOT,DEPENDENCY=LCLS_General,VERSION=2.11.0,VENDOR=SLAC")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS:MOT,DEPENDENCY=LCLS_General,VERSION=2.11.0,VENDOR=SLAC")
 #   lcls-twincat-math: * -> 1.0.0 (SLAC - LCLS)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS_MOT,DEPENDENCY=lcls-twincat-math,VERSION=1.0.0,VENDOR=SLAC - LCLS")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS:MOT,DEPENDENCY=lcls-twincat-math,VERSION=1.0.0,VENDOR=SLAC - LCLS")
 #   lcls-twincat-motion: * -> 4.2.0 (SLAC)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS_MOT,DEPENDENCY=lcls-twincat-motion,VERSION=4.2.0,VENDOR=SLAC")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS:MOT,DEPENDENCY=lcls-twincat-motion,VERSION=4.2.0,VENDOR=SLAC")
 #   PMPS: * -> 3.3.0 (SLAC - LCLS)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS_MOT,DEPENDENCY=PMPS,VERSION=3.3.0,VENDOR=SLAC - LCLS")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS:MOT,DEPENDENCY=PMPS,VERSION=3.3.0,VENDOR=SLAC - LCLS")
 #   Tc2_MC2: * -> 3.3.65.0 (Beckhoff Automation GmbH)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS_MOT,DEPENDENCY=Tc2_MC2,VERSION=3.3.65.0,VENDOR=Beckhoff Automation GmbH")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS:MOT,DEPENDENCY=Tc2_MC2,VERSION=3.3.65.0,VENDOR=Beckhoff Automation GmbH")
 #   Tc2_Standard: * -> 3.4.5.0 (Beckhoff Automation GmbH)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS_MOT,DEPENDENCY=Tc2_Standard,VERSION=3.4.5.0,VENDOR=Beckhoff Automation GmbH")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS:MOT,DEPENDENCY=Tc2_Standard,VERSION=3.4.5.0,VENDOR=Beckhoff Automation GmbH")
 #   Tc2_System: * -> 3.6.4.0 (Beckhoff Automation GmbH)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS_MOT,DEPENDENCY=Tc2_System,VERSION=3.6.4.0,VENDOR=Beckhoff Automation GmbH")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS:MOT,DEPENDENCY=Tc2_System,VERSION=3.6.4.0,VENDOR=Beckhoff Automation GmbH")
 #   Tc2_Utilities: * -> 3.9.2.0 (Beckhoff Automation GmbH)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS_MOT,DEPENDENCY=Tc2_Utilities,VERSION=3.9.2.0,VENDOR=Beckhoff Automation GmbH")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS:MOT,DEPENDENCY=Tc2_Utilities,VERSION=3.9.2.0,VENDOR=Beckhoff Automation GmbH")
 #   Tc3_Module: * -> 3.4.5.0 (Beckhoff Automation GmbH)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS_MOT,DEPENDENCY=Tc3_Module,VERSION=3.4.5.0,VENDOR=Beckhoff Automation GmbH")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS:MOT,DEPENDENCY=Tc3_Module,VERSION=3.4.5.0,VENDOR=Beckhoff Automation GmbH")
 #   TcUnit: * -> 1.3.1 (www.tcunit.org)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS_MOT,DEPENDENCY=TcUnit,VERSION=1.3.1,VENDOR=www.tcunit.org")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:SVLS:MOT,DEPENDENCY=TcUnit,VERSION=1.3.1,VENDOR=www.tcunit.org")
 
 cd "$(IOC_TOP)"
 
 ## PLC Project Database files ##
-dbLoadRecords("SVLS_MOT.db", "PORT=$(ASYN_PORT),PREFIX=PLC:SVLS_MOT:,IOCNAME=$(IOC),IOC=$(IOC)")
+dbLoadRecords("SVLS_MOT.db", "PORT=$(ASYN_PORT),PREFIX=PLC:SVLS:MOT:,IOCNAME=$(IOC),IOC=$(IOC)")
 
-# Total records: 255
-callbackSetQueueSize(2510)
+# Total records: 275
+callbackSetQueueSize(2550)
 
 # Autosave and archive settings:
-save_restoreSet_status_prefix("PLC:SVLS_MOT:")
+save_restoreSet_status_prefix("PLC:SVLS:MOT:")
 save_restoreSet_IncompleteSetsOk(1)
 save_restoreSet_DatedBackupFiles(1)
 set_pass0_restoreFile("info_positions.sav")
 set_pass1_restoreFile("info_settings.sav")
 
-# ** Development IOC Settings **
-# Development IOC autosave and archive files go in the IOC top directory:
-cd "$(IOC_TOP)"
+# ** Production IOC Settings **
+set_savefile_path("$(IOC_DATA)/$(IOC)/autosave")
+set_requestfile_path("$(IOC_DATA)/$(IOC)/autosave")
 
-# (Development mode) Create info_positions.req and info_settings.req
+# Production IOC autosave files go in iocData:
+cd "$(IOC_DATA)/$(IOC)/autosave"
+
+# Create info_positions.req and info_settings.req
 makeAutosaveFiles()
-# (Development mode) Create the archiver file
+
+cd "$(IOC_DATA)/$(IOC)/archive"
+
+# Create $(IOC).archive
 makeArchiveFromDbInfo("$(IOC).archive", "archive")
+cd "$(IOC_TOP)"
 
 # Configure access security: this is required for caPutLog.
 asSetFilename("$(ACF_FILE)")
@@ -254,4 +263,7 @@ caPutLogInit("$(EPICS_CAPUTLOG_HOST):$(EPICS_CAPUTLOG_PORT)", 0)
 # Start autosave backups
 create_monitor_set( "info_positions.req", 10, "" )
 create_monitor_set( "info_settings.req", 60, "" )
+
+# All IOCs should dump some common info after initial startup.
+< /reg/d/iocCommon/All/post_linux.cmd
 
